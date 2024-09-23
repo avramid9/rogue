@@ -3,16 +3,22 @@
 int main() {
     Player* user;
     int ch;
+    Position* newPosition;
+
+    char** level;
 
     screenSetUp();
 
     mapSetUp();
 
+    level = saveLevelPositions();
+
     user = playerSetUp();
 
     // main game loop
     while ((ch = getch()) != 'q') {
-        handleInput(ch, user);
+        newPosition = handleInput(ch, user);
+        checkPosition(newPosition, user, level);
     }
     
     endwin();
@@ -29,25 +35,3 @@ int screenSetUp() {
 
     return 1;
 }
-
-Room** mapSetUp() {
-    Room** rooms;
-    rooms = malloc(sizeof(Room)*6);
-
-    rooms[0] = createRoom(13, 13, 6, 8);
-    drawRoom(rooms[0]);
-
-    rooms[1] = createRoom(2, 40, 6, 8);
-    drawRoom(rooms[1]);
-
-    rooms[2] = createRoom(10, 40, 6, 12);
-    drawRoom(rooms[2]);
-
-    connectDoors(rooms[0]->doors[3], rooms[2]->doors[1]);
-
-    connectDoors(rooms[1]->doors[2], rooms[0]->doors[0]);
-
-    return rooms;
-}
-
-
