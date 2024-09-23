@@ -1,7 +1,6 @@
 #include "rogue.h"
 
 int main() {
-    Player* user;
     int ch;
     Position* newPosition;
 
@@ -11,12 +10,12 @@ int main() {
 
     level = createLevel(1);
 
-    user = playerSetUp();
-
     // main game loop
     while ((ch = getch()) != 'q') {
-        newPosition = handleInput(ch, user);
-        checkPosition(newPosition, user, level->tiles);
+        newPosition = handleInput(ch, level->user);
+        checkPosition(newPosition, level->user, level->tiles);
+        moveMonsters(level);
+        move(level->user->position->y, level->user->position->x);
     }
     
     endwin();
