@@ -9,6 +9,7 @@ int combat(Player* player, Monster* monster, int order) {
         }
         else {
             killMonster(monster);
+            player->exp++;
         }
     }
     // monster attacking

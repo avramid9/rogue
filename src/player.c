@@ -9,6 +9,9 @@ Player* playerSetUp() {
     newPlayer->position->x = 14;
     newPlayer->health = 20;
     newPlayer->attack = 1;
+    newPlayer->gold = 0;
+    newPlayer->exp = 0;
+    newPlayer->maxHealth = 20;
 
     mvprintw(newPlayer->position->y, newPlayer->position->x, "@");
     move(newPlayer->position->y, newPlayer->position->x);

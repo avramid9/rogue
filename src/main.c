@@ -9,9 +9,11 @@ int main() {
     screenSetUp();
 
     level = createLevel(1);
+    printGameHub(level);
 
     // main game loop
     while ((ch = getch()) != 'q') {
+        printGameHub(level);
         newPosition = handleInput(ch, level->user);
         checkPosition(newPosition, level);
         moveMonsters(level);
@@ -21,14 +23,4 @@ int main() {
     endwin();
 
     return 0;
-}
-
-int screenSetUp() {
-    initscr();
-    printw("Hello World!");
-    noecho();
-    refresh();
-    srand(time(NULL));
-
-    return 1;
 }
