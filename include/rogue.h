@@ -34,6 +34,7 @@ typedef struct Room {
 typedef struct Player {
     Position* position;
     int health;
+    int attack;
     // Room* room;
 } Player;
 
@@ -45,6 +46,7 @@ typedef struct Monster {
     int speed;
     int defence;
     int pathfinding;
+    int alive;
     Position* position;
 } Monster;
 
@@ -58,7 +60,7 @@ char** saveLevelPositions();
 // player functions
 Player* playerSetUp();
 Position* handleInput(int input, Player* user);
-int checkPosition(Position* newPosition, Player* user, char** level);
+int checkPosition(Position* newPosition, Level* level);
 int playerMove(Position* newPosition, Player* user, char** level);
 
 // room functions
@@ -73,5 +75,11 @@ Monster* createMonster(char symbol, int health, int attack, int speed, int defen
 int setStartingPosition(Monster* monster, Room* room);
 int moveMonsters(Level* level);
 int pathFindingSeek(Position* start, Position* destination);
+int pathFindingRandom(Position* position);
+Monster* getMonsterAt(Position* position, Monster** monsters);
+int killMonster(Monster* monster);
+
+
+int combat(Player* player, Monster* monster, int order);
 
 #endif
