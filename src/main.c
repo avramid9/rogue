@@ -2,6 +2,10 @@
 
 int main() {
     int ch;
+
+    //MAX_HEIGHT = 25; 
+    //MAX_WIDTH = 100;
+
     Position* newPosition;
 
     Level* level;

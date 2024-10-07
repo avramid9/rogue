@@ -5,6 +5,12 @@
 #include <ncurses.h>
 #include <time.h>
 
+#define MAX_HEIGHT 25
+#define MAX_WIDTH 100
+
+
+// struct definitions
+
 typedef struct Level {
     char** tiles;
     int level;
@@ -53,7 +59,9 @@ typedef struct Monster {
     Position* position;
 } Monster;
 
-int screenSetUp();
+// Global variables
+// int MAX_HEIGHT;
+// int MAX_WIDTH;
 
 // screen functions
 int screenSetUp();

@@ -1,10 +1,11 @@
 CC = gcc
-CFLAGS = -lncurses -I$(IDIR)
+CFLAGS = -g -O0 -lncurses -I$(IDIR)
 
 IDIR = ./include/
 SRCDIR = ./src/
 
-SOURCES = $(SRCDIR)*.c
+SOURCES = $(SRCDIR)*.c\
+		  $(SRCDIR)utils/*.c
 
 all: clean rogue
 
@@ -13,6 +14,9 @@ rogue: $(SOURCES)
 
 run:
 	./rogue
+
+mem:
+	valgrind --leak-check=yes --log-file="log.txt" ./rogue
 
 clean:
 	@[ -f ./rogue ] && rm rogue || true

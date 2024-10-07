@@ -3,3 +3,6 @@ rogue
 
 # vscode settings files
 .vscode
+
+# error output of valgrind
+log.txt
