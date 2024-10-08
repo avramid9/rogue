@@ -17,9 +17,6 @@ Player* playerSetUp() {
 int placePlayer(Room** rooms, Player* user) {
     user->position->x = rooms[3]->position.x + 1;
     user->position->y = rooms[3]->position.y + 1;
-
-    mvprintw(user->position->y, user->position->x, "@");
-    move(user->position->y, user->position->x);
 }
 
 Position* handleInput(int input, Player* user) {
@@ -80,23 +77,16 @@ int checkPosition(Position* newPosition, Level* level) {
             combat(user, getMonsterAt(newPosition, level->monsters), 1);
             break;
         default:
-            move(user->position->y, user->position->x);
             break;
     }
 }
 
 int playerMove(Position* newPosition, Player* user, char** level) {
-    char buffer[2];
-    buffer[0] = level[user->position->y][user->position->x];
-    buffer[1] = '\0';
-    
-    //sprintf(buffer, "%c", level[user->position.y][user->position.x]);
-    
-    mvprintw(user->position->y, user->position->x, "%s", buffer);
-    
     user->position->y = newPosition->y;
     user->position->x = newPosition->x;
+}
 
-    mvprintw(user->position->y, user->position->x, "@");
-    move(user->position->y, user->position->x);
+void drawPlayer(Player* player) {
+    mvprintw(player->position->y, player->position->x, "@");
+    move(player->position->y, player->position->x);
 }

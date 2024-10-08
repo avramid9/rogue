@@ -18,6 +18,24 @@ Level* createLevel(int level) {
     return newLevel;
 }
 
+void drawLevel(Level* level) {
+    int x, y, i;
+
+    // printing tiles
+    for (y = 0; y < MAX_HEIGHT; y++) {
+        for (x = 0; x < MAX_WIDTH; x++) {
+            mvaddch(y, x, level->tiles[y][x]);
+        }
+    }
+
+    // printing monsters
+    for (i = 0; i < level->numberOfMonsters; i++) {
+        drawMonster(level->monsters[i]);
+    }
+
+    drawPlayer(level->user);
+}
+
 Room** roomsSetUp() {
     int x;
     Room** rooms;

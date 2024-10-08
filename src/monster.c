@@ -60,7 +60,6 @@ Monster* createMonster(char symbol, int health, int attack, int speed, int defen
 }
 
 int killMonster(Monster* monster) {
-    mvprintw(monster->position->y, monster->position->x, ".");
     monster->alive = 0;
 
     return 1;
@@ -71,8 +70,6 @@ int setStartingPosition(Monster* monster, Room* room) {
 
     monster->position->x = (rand() % (room->width - 2)) + room->position.x + 1;
     monster->position->y = (rand() % (room->height - 2)) + room->position.y + 1;
-
-    mvprintw(monster->position->y, monster->position->x, "%s", monster->string);
 }
 
 int moveMonsters(Level* level) {
@@ -81,7 +78,6 @@ int moveMonsters(Level* level) {
         if (level->monsters[x]->alive == 0) {
             continue;
         }
-        mvprintw(level->monsters[x]->position->y, level->monsters[x]->position->x, ".");
 
         if (level->monsters[x]->pathfinding == 1) {
             // random
@@ -91,8 +87,6 @@ int moveMonsters(Level* level) {
             // seek
             pathFindingSeek(level->monsters[x]->position, level->user->position);
         }
-
-        mvprintw(level->monsters[x]->position->y, level->monsters[x]->position->x, "%s", level->monsters[x]->string);
     }
 }
 
@@ -165,6 +159,12 @@ Monster* getMonsterAt(Position* position, Monster** monsters) {
         }
     }
     return NULL;
+}
+
+void drawMonster(Monster* monster) {
+    if (monster->alive) {
+        mvprintw(monster->position->y, monster->position->x, monster->string);
+    }
 }
 
 /*
