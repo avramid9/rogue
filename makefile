@@ -1,21 +1,26 @@
 CC = gcc
-CFLAGS = -g -O0 -lncurses -I$(IDIR)
+CFLAGS = -I$(IDIR) -lmenu -lncurses
+CFLAGSMEM = -g -O0 -I$(IDIR) -lmenu -lncurses
 
 IDIR = ./include/
 SRCDIR = ./src/
 
 SOURCES = $(SRCDIR)*.c\
-		  $(SRCDIR)utils/*.c
+		  $(SRCDIR)utils/*.c\
+		  $(SRCDIR)windows/*.c
 
 all: clean rogue
 
 rogue: $(SOURCES)
 	$(CC) $(SOURCES) $(CFLAGS) -o $@
 
+rogueMem: $(SOURCES)
+	$(CC) $(SOURCES) $(CFLAGSMEM) -o rogue
+
 run:
 	./rogue
 
-mem:
+mem: clean rogueMem
 	valgrind --leak-check=yes --log-file="log.txt" ./rogue
 
 clean:

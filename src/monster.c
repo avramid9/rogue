@@ -163,8 +163,8 @@ Monster* getMonsterAt(Position* position, Monster** monsters) {
         if ((position->y == monsters[x]->position->y) && (position->x == monsters[x]->position->x)) {
             return monsters[x];
         }
-        return NULL;
     }
+    return NULL;
 }
 
 /*
