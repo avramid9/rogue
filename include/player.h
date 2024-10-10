@@ -2,6 +2,9 @@
 #define PLAYER_H
 
 #include "position.h"
+#include "item.h"
+
+#define MAX_ITEMS 25
 
 typedef struct Player {
     Position* position;
@@ -10,7 +13,9 @@ typedef struct Player {
     int gold;
     int maxHealth;
     int exp;
+    int numberItems;
     // Room* room;
+    Item** items;
 } Player;
 
 // player functions

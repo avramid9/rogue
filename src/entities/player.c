@@ -8,12 +8,19 @@ Player* playerSetUp() {
     Player* newPlayer;
     newPlayer = malloc(sizeof(Player));
     newPlayer->position = malloc(sizeof(Position));
+    newPlayer->items = malloc(sizeof(Item*));
+
 
     newPlayer->health = 20;
     newPlayer->attack = 1;
     newPlayer->gold = 0;
     newPlayer->exp = 0;
+    newPlayer->numberItems = 0;
     newPlayer->maxHealth = 20;
+
+    // give player starting weapon
+    newPlayer->items[0] = createSword(1, 20);
+    newPlayer->numberItems++;
 
     return newPlayer;
 }

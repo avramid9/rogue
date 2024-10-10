@@ -9,8 +9,9 @@
 void pathFind(Position* start, Position* end);
 
 // screen functions
-int screenSetUp();
-int printGameHub(Level* level);
+void screenSetUp();
+void printGameHub(Level* level);
+void printInventory(Player* player);
 int combat(Player* player, Monster* monster, int order);
 
 #endif

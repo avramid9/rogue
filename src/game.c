@@ -23,18 +23,28 @@ void gameLoop(Game* game) {
     
 
     // main game loop
-    while (ch  != 'q') {
-        
-        newPosition = handleInput(ch, level->user);
-        checkPosition(newPosition, level);
-        moveMonsters(level);
-
-        render(game);
-
-        if (level->user->health <= 0) {
-            game->currentLevel = 0;
-            return;
+    while (1) {
+        if (ch == 'q' || ch == 'Q') {
+            break;
         }
+
+        if (ch == 'i' || ch == 'I') {
+            printInventory(level->user);
+        }
+
+        else {
+            newPosition = handleInput(ch, level->user);
+            checkPosition(newPosition, level);
+            moveMonsters(level);
+
+            render(game);
+
+            if (level->user->health <= 0) {
+                game->currentLevel = 0;
+                return;
+            }
+        }
+
         ch = getch();
     }
 }

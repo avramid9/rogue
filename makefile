@@ -7,6 +7,8 @@ SRCDIR = ./src/
 
 SOURCES = $(SRCDIR)*.c\
 		  $(SRCDIR)utils/*.c\
+		  $(SRCDIR)entities/*.c\
+		  $(SRCDIR)entities/items/*.c\
 		  $(SRCDIR)windows/*.c
 
 all: clean rogue
