@@ -1,4 +1,5 @@
 #include "rogue.h"
+#include "level.h"
 #include "utils.h"
 
 Level* createLevel(int level) {

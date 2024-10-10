@@ -1,4 +1,6 @@
 #include "rogue.h"
+#include "player.h"
+#include "monster.h"
 
 int combat(Player* player, Monster* monster, int order) {
     // player attacking

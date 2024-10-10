@@ -1,4 +1,5 @@
 #include "rogue.h"
+#include "utils.h"
 
 int screenSetUp() {
     //MAX_HEIGHT = 25; 

@@ -1,5 +1,7 @@
 #include "rogue.h"
 #include "mainMenu.h"
+#include "game.h"
+#include "utils.h"
 
 void menuLoop() {
     int choice;

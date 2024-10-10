@@ -1,4 +1,6 @@
 #include "rogue.h"
+#include "monster.h"
+#include "level.h"
 
 int addMonsters(Level* level) {
     int x = 0;

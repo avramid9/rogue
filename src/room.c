@@ -1,4 +1,5 @@
 #include "rogue.h"
+#include "room.h"
 
 Room* createRoom(int grid, int numberOfDoors) {
     Room* newRoom = malloc(sizeof(Room));

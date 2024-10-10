@@ -1,4 +1,8 @@
 #include "rogue.h"
+#include "player.h"
+#include "room.h"
+#include "level.h"
+#include "utils.h"
 
 Player* playerSetUp() {
     Player* newPlayer;
